@@ -1,0 +1,78 @@
+08048daa <phase_6>:
+ 8048daa:	56                   	push   %esi
+ 8048dab:	53                   	push   %ebx
+ 8048dac:	83 ec 44             	sub    $0x44,%esp
+ 8048daf:	8d 44 24 10          	lea    0x10(%esp),%eax
+ 8048db3:	89 44 24 04          	mov    %eax,0x4(%esp)
+ 8048db7:	8b 44 24 50          	mov    0x50(%esp),%eax
+ 8048dbb:	89 04 24             	mov    %eax,(%esp)
+ 8048dbe:	e8 78 04 00 00       	call   804923b <read_six_numbers>
+ 8048dc3:	be 00 00 00 00       	mov    $0x0,%esi
+ 8048dc8:	8b 44 b4 10          	mov    0x10(%esp,%esi,4),%eax
+ 8048dcc:	83 e8 01             	sub    $0x1,%eax
+ 8048dcf:	83 f8 05             	cmp    $0x5,%eax
+ 8048dd2:	76 05                	jbe    8048dd9 <phase_6+0x2f>
+ 8048dd4:	e8 2d 03 00 00       	call   8049106 <explode_bomb>
+ 8048dd9:	83 c6 01             	add    $0x1,%esi
+ 8048ddc:	83 fe 06             	cmp    $0x6,%esi
+ 8048ddf:	74 1b                	je     8048dfc <phase_6+0x52>
+ 8048de1:	89 f3                	mov    %esi,%ebx
+ 8048de3:	8b 44 9c 10          	mov    0x10(%esp,%ebx,4),%eax
+ 8048de7:	39 44 b4 0c          	cmp    %eax,0xc(%esp,%esi,4)
+ 8048deb:	75 05                	jne    8048df2 <phase_6+0x48>
+ 8048ded:	e8 14 03 00 00       	call   8049106 <explode_bomb>
+ 8048df2:	83 c3 01             	add    $0x1,%ebx
+ 8048df5:	83 fb 05             	cmp    $0x5,%ebx
+ 8048df8:	7e e9                	jle    8048de3 <phase_6+0x39>
+ 8048dfa:	eb cc                	jmp    8048dc8 <phase_6+0x1e>
+ 8048dfc:	8d 44 24 10          	lea    0x10(%esp),%eax
+ 8048e00:	8d 5c 24 28          	lea    0x28(%esp),%ebx
+ 8048e04:	b9 07 00 00 00       	mov    $0x7,%ecx
+ 8048e09:	89 ca                	mov    %ecx,%edx
+ 8048e0b:	2b 10                	sub    (%eax),%edx
+ 8048e0d:	89 10                	mov    %edx,(%eax)
+ 8048e0f:	83 c0 04             	add    $0x4,%eax
+ 8048e12:	39 d8                	cmp    %ebx,%eax
+ 8048e14:	75 f3                	jne    8048e09 <phase_6+0x5f>
+ 8048e16:	bb 00 00 00 00       	mov    $0x0,%ebx
+ 8048e1b:	eb 16                	jmp    8048e33 <phase_6+0x89>
+ 8048e1d:	8b 52 08             	mov    0x8(%edx),%edx
+ 8048e20:	83 c0 01             	add    $0x1,%eax
+ 8048e23:	39 c8                	cmp    %ecx,%eax
+ 8048e25:	75 f6                	jne    8048e1d <phase_6+0x73>
+ 8048e27:	89 54 b4 28          	mov    %edx,0x28(%esp,%esi,4)
+ 8048e2b:	83 c3 01             	add    $0x1,%ebx
+ 8048e2e:	83 fb 06             	cmp    $0x6,%ebx
+ 8048e31:	74 17                	je     8048e4a <phase_6+0xa0>
+ 8048e33:	89 de                	mov    %ebx,%esi
+ 8048e35:	8b 4c 9c 10          	mov    0x10(%esp,%ebx,4),%ecx
+ 8048e39:	b8 01 00 00 00       	mov    $0x1,%eax
+ 8048e3e:	ba 3c c1 04 08       	mov    $0x804c13c,%edx
+ 8048e43:	83 f9 01             	cmp    $0x1,%ecx
+ 8048e46:	7f d5                	jg     8048e1d <phase_6+0x73>
+ 8048e48:	eb dd                	jmp    8048e27 <phase_6+0x7d>
+ 8048e4a:	8b 5c 24 28          	mov    0x28(%esp),%ebx
+ 8048e4e:	8b 44 24 2c          	mov    0x2c(%esp),%eax
+ 8048e52:	89 43 08             	mov    %eax,0x8(%ebx)
+ 8048e55:	8b 54 24 30          	mov    0x30(%esp),%edx
+ 8048e59:	89 50 08             	mov    %edx,0x8(%eax)
+ 8048e5c:	8b 44 24 34          	mov    0x34(%esp),%eax
+ 8048e60:	89 42 08             	mov    %eax,0x8(%edx)
+ 8048e63:	8b 54 24 38          	mov    0x38(%esp),%edx
+ 8048e67:	89 50 08             	mov    %edx,0x8(%eax)
+ 8048e6a:	8b 44 24 3c          	mov    0x3c(%esp),%eax
+ 8048e6e:	89 42 08             	mov    %eax,0x8(%edx)
+ 8048e71:	c7 40 08 00 00 00 00 	movl   $0x0,0x8(%eax)
+ 8048e78:	be 05 00 00 00       	mov    $0x5,%esi
+ 8048e7d:	8b 43 08             	mov    0x8(%ebx),%eax
+ 8048e80:	8b 10                	mov    (%eax),%edx
+ 8048e82:	39 13                	cmp    %edx,(%ebx)
+ 8048e84:	7d 05                	jge    8048e8b <phase_6+0xe1>
+ 8048e86:	e8 7b 02 00 00       	call   8049106 <explode_bomb>
+ 8048e8b:	8b 5b 08             	mov    0x8(%ebx),%ebx
+ 8048e8e:	83 ee 01             	sub    $0x1,%esi
+ 8048e91:	75 ea                	jne    8048e7d <phase_6+0xd3>
+ 8048e93:	83 c4 44             	add    $0x44,%esp
+ 8048e96:	5b                   	pop    %ebx
+ 8048e97:	5e                   	pop    %esi
+ 8048e98:	c3                   	ret    
